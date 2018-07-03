@@ -1,5 +1,6 @@
-import { uniqueId } from '../../util/id_generator'
+import { uniqueId } from '../../util/id_generator';
 import React from 'react';
+// import { createTodo } from '../actions/todo_actions';
 
 class TodoForm extends React.Component {
   constructor(props) {
@@ -9,7 +10,6 @@ class TodoForm extends React.Component {
       body: "",
       done: false
     };
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -20,7 +20,7 @@ class TodoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const todo = Object.assign({}, this.state, { id: uniqueId() });
-    this.props.receiveTodo(todo);
+    this.props.createTodo(todo);
     this.setState({
       title: "",
       body: ""
@@ -28,6 +28,8 @@ class TodoForm extends React.Component {
   }
 
   render() {
+    debugger
+
     return (
       <form className="todo-form" onSubmit={this.handleSubmit}>
         <label>Title:
@@ -54,6 +56,6 @@ class TodoForm extends React.Component {
       </form>
     );
   }
-};
+}
 
 export default TodoForm;
